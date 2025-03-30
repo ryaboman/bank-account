@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: BankAccount
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://192.168.31.101:5432/bank_account
+    username: root
+    password: 123456
+
+  liquibase:
+    change-log: db/changelog/main-changelog.xml
+    enabled: true

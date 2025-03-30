@@ -1,4 +1,5 @@
 package ru.ryaboman.projects.bankAccount.entity;
 
-public class User {
+public enum OperationType {
+    DEPOSIT, WITHDRAW
 }

@@ -1,0 +1,20 @@
+# Use postgres/example user/password credentials
+version: '3.1'
+
+services:
+
+  app:
+    image: 'openjdk'
+
+  db:
+    image: 'postgres'
+    container_name: mypsrg
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_USER: radio
+      POSTGRES_DB: first
+      PGDATA: ./postgres/data
+      POSTGRES_INITDB_ARGS: "-A md5"
+    ports:
+      - "5432:5432"
