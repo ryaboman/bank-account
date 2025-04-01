@@ -1,0 +1,286 @@
+{
+	"info": {
+		"_postman_id": "19fae3c2-0727-4d07-8283-7b328e14d76e",
+		"name": "tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "28184234"
+	},
+	"item": [
+		{
+			"name": "3,249 requests per minute",
+			"item": [
+				{
+					"name": "Пополнение кошелька",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 200 и данные в формате JSON\", function() {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.be.withBody;\r",
+									"    pm.response.to.be.json;\r",
+									"}); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"walletId\": \"a93ec8d2-2ead-4d97-bf43-2d76ec6bfece\",\r\n    \"operationType\": \"DEPOSIT\",\r\n    \"amount\": \"10.00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8181/api/v1/wallet"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Пополнение кошелька",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Ответ должен содержать код статуса 200 и данные в формате JSON\", function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.be.withBody;\r",
+							"    pm.response.to.be.json;\r",
+							"}); "
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"walletId\": \"a93ec8d2-2ead-4d97-bf43-2d76ec6bfece\",\r\n    \"operationType\": \"DEPOSIT\",\r\n    \"amount\": \"20000\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8181/api/v1/wallet"
+			},
+			"response": []
+		},
+		{
+			"name": "Снятие денег с кошелька",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Ответ должен содержать код статуса 200 и данные в формате JSON\", function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.be.withBody;\r",
+							"    pm.response.to.be.json;\r",
+							"}); "
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"walletId\": \"a93ec8d2-2ead-4d97-bf43-2d76ec6bfece\",\r\n    \"operationType\": \"WITHDRAW\",\r\n    \"amount\": \"1010.000\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8181/api/v1/wallet"
+			},
+			"response": []
+		},
+		{
+			"name": "Ошибка при невалидном JSON",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Ответ должен содержать код статуса 400\", function() {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"walletId\": a93ec8d2-2ead-4d97-bf43-2d76ec6bfece\",\r\n    \"operationType\" \"DEPOSIT\"\r\n    \"amount\": \"10.000\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8181/api/v1/wallet"
+			},
+			"response": []
+		},
+		{
+			"name": "Ошибка при отсутствии кошелька по UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Ответ должен содержать код статуса 404\", function() {\r",
+							"    pm.response.to.have.status(404);\r",
+							"}); "
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"walletId\": \"a93ec8d2-2ead-4d97-bf43-2d76ec6bfdfa\",\r\n    \"operationType\": \"DEPOSIT\",\r\n    \"amount\": \"10.000\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8181/api/v1/wallet"
+			},
+			"response": []
+		},
+		{
+			"name": "Ошибка при отсутствии денег на счету",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Ответ должен содержать код статуса 400\", function() {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"walletId\": \"a93ec8d2-2ead-4d97-bf43-2d76ec6bfece\",\r\n    \"operationType\": \"WITHDRAW\",\r\n    \"amount\": \"100000\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8181/api/v1/wallet"
+			},
+			"response": []
+		},
+		{
+			"name": "Повторное пополнение кошелька",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Ответ должен содержать код статуса 200 и данные в формате JSON\", function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.be.withBody;\r",
+							"    pm.response.to.be.json;\r",
+							"}); "
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"walletId\": \"a93ec8d2-2ead-4d97-bf43-2d76ec6bfece\",\r\n    \"operationType\": \"DEPOSIT\",\r\n    \"amount\": \"1000.00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8181/api/v1/wallet"
+			},
+			"response": []
+		},
+		{
+			"name": "Получение данных о счете",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Ответ должен содержать код статуса 200 и данные в формате JSON\", function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.be.withBody;\r",
+							"    pm.response.to.be.json;\r",
+							"}); "
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8181/api/v1/wallets/a93ec8d2-2ead-4d97-bf43-2d76ec6bfece"
+			},
+			"response": []
+		},
+		{
+			"name": "Ошибка при отсутствии кошелька по UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Ответ должен содержать код статуса 404\", function() {\r",
+							"    pm.response.to.have.status(404);\r",
+							"}); "
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8181/api/v1/wallets/a93ec8d2-2ead-4d97-bf43-2d76ec6bfdfa"
+			},
+			"response": []
+		}
+	]
+}
