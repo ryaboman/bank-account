@@ -11,7 +11,7 @@
         </preConditions>
 
         <createTable tableName="wallets">
-            <column name="wallet_id" type="uuid" autoIncrement="true">
+            <column name="wallet_id" type="uuid">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="amount" type="bigint" defaultValue="0">

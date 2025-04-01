@@ -11,3 +11,7 @@ spring:
   liquibase:
     change-log: db/changelog/main-changelog.xml
     enabled: true
+
+springdoc:
+  api-docs:
+    path: /api/v1/api-docs

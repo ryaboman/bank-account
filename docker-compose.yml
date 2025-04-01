@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  service:
+    image: banc-acount:0.0.1
+    build:
+      context: app
+      dockerfile: Dockerfile
+    ports:
+      - "8181:8181"
+    depends_on:
+      - service-db
+    environment:
+      - SERVER_PORT= 8181
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://service-db/bank_account
+      - SPRING_DATASOURCE_USERNAME=username
+      - SPRING_DATASOURCE_PASSWORD=password
+
+  service-db:
+    image: postgres:14.7-alpine
+    environment:
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: bank_account
+    ports:
+      - "15432:5432"
+    restart: unless-stopped
+    
