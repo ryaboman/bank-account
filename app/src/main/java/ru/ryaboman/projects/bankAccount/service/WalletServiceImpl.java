@@ -1,6 +1,5 @@
 package ru.ryaboman.projects.bankAccount.service;
 
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,11 +10,11 @@ import ru.ryaboman.projects.bankAccount.entity.Wallet;
 import ru.ryaboman.projects.bankAccount.exception.IncorrectOperationException;
 import ru.ryaboman.projects.bankAccount.exception.NotFoundException;
 import ru.ryaboman.projects.bankAccount.mapper.WalletMapper;
-import static java.math.BigDecimal.ZERO;
 
 import java.util.Optional;
 import java.util.UUID;
 
+import static java.math.BigDecimal.ZERO;
 import static ru.ryaboman.projects.bankAccount.entity.OperationType.DEPOSIT;
 import static ru.ryaboman.projects.bankAccount.entity.OperationType.WITHDRAW;
 
